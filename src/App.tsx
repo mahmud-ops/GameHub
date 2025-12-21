@@ -19,7 +19,7 @@ const App = () => {
             Aside
           </GridItem>
         </Show>
-        <GridItem area="main" fontWeight="bold" textAlign="center">
+        <GridItem area="main" fontWeight="bold">
           <GameGrid/>
         </GridItem>
       </Grid>
