@@ -11,19 +11,14 @@ const App = () => {
         }}
       >
         <GridItem area="nav" fontWeight="bold" textAlign="center">
-          <NavBar/>
+          <NavBar />
         </GridItem>
         <Show above="lg">
-          <GridItem
-            area="aside"
-            bg="green"
-            fontWeight="bold"
-            textAlign="center"
-          >
+          <GridItem area="aside" fontWeight="bold" textAlign="center">
             Aside
           </GridItem>
         </Show>
-        <GridItem area="main" bg="gold" fontWeight="bold" textAlign="center">
+        <GridItem area="main" fontWeight="bold" textAlign="center">
           Main
         </GridItem>
       </Grid>
