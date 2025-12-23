@@ -3,7 +3,7 @@ import type { Platform } from "./useGames"
 
 const usePlatforms = () => {
   return (
-        useData<Platform>('./platforms/lists/parents')
+        useData<Platform>('./platforms')
     )
 }
 
