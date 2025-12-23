@@ -12,21 +12,23 @@ import getCroppedImage from "../Services/cropped-image";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({onSelectGenre}:Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading } = useGenres();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
     <List>
-      {isLoading && skeletons.map(() => (
-        <HStack>
-        <Skeleton marginY={2} boxSize={"50px"} />
-        <SkeletonText width={20} noOfLines={2}/>
-        </HStack>
-      ))}
+      {isLoading &&
+        skeletons.map(() => (
+          <HStack>
+            <Skeleton marginY={2} boxSize={"50px"} />
+            <SkeletonText width={20} noOfLines={2} />
+          </HStack>
+        ))}
 
       {data?.map((g) => (
         <ListItem paddingY={2} key={g.id}>
@@ -36,7 +38,15 @@ const GenreList = ({onSelectGenre}:Props) => {
               boxSize={"32px"}
               borderRadius={8}
             ></Image>
-            <Button variant={'link'} fontSize={15} onClick={() => onSelectGenre(g)}>{g.name}</Button>
+            <Button
+              fontWeight={g.id === selectedGenre?.id ? "bold" : "normal"}
+              color ={g.id === selectedGenre?.id ? 'violet' : ''}
+              variant={"link"}
+              fontSize={15}
+              onClick={() => onSelectGenre(g)}
+            >
+              {g.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}
