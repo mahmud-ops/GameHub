@@ -11,15 +11,24 @@ const App = () => {
           base: `"nav" "main"`,
           lg: `"nav nav" "aside main"`,
         }}
+
+        templateColumns={{
+          base: '1fr',
+          lg: '200px 1fr'
+        }}
       >
-        <GridItem area="nav" fontWeight="bold" textAlign="center">
+        <GridItem area="nav" bgColor={'blackAlpha.100'}>
           <NavBar />
         </GridItem>
+
+
         <Show above="lg">
-          <GridItem area="aside" fontWeight="bold" textAlign="center">
+          <GridItem area="aside" bgColor={'blackAlpha.100'} paddingX={2}>
             <GenreList />
           </GridItem>
         </Show>
+
+
         <GridItem area="main" fontWeight="bold">
           <GameGrid/>
         </GridItem>
