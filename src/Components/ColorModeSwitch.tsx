@@ -10,7 +10,7 @@ export default function ColorModeSwitch() {
       <Switch
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
-        colorScheme="green"
+        colorScheme="blue"
       />
     </HStack>
   );
