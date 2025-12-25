@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./Components/NavBar";
 import GameGrid from "./Components/GameGrid";
 import GenreList from "./Components/GenreList";
@@ -6,11 +6,18 @@ import { useState } from "react";
 import type { Genre } from "./Hooks/useGenres";
 import PlatformSelector from "./Components/PlatformSelector";
 import type { Platform } from "./Hooks/useGames";
+import SortSelector from "./Components/SortSelector";
+
+
+// Refactor: Extracting a universal query object
+export interface GameQuery{
+  genre: Genre | null
+  platform: Platform | null
+}
 
 const App = () => {
 
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform,setSelectedPlatform] = useState <Platform | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>( {} as GameQuery )
 
   return (
     <div>
@@ -32,14 +39,17 @@ const App = () => {
 
         <Show above="lg">
           <GridItem area="aside" bgColor={'blackAlpha.100'} paddingX={2} height={'100dvh'} overflow={'auto'}>
-            <GenreList selectedGenre={selectedGenre} onSelectGenre={genre => setSelectedGenre(genre)}/>
+            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={genre => setGameQuery({...gameQuery,genre})}/>
           </GridItem>
         </Show>
 
 
         <GridItem area="main" fontWeight="bold" height={'100dvh'} overflow={'auto'} padding={2}>
-          <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={platform => setSelectedPlatform(platform)}/>
-          <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre}/>
+          <HStack spacing={5}>
+          <SortSelector/ >
+          <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={platform => setGameQuery({...gameQuery,platform})}/>
+          </HStack>
+          <GameGrid gameQuery = {gameQuery}/>
         </GridItem>
       </Grid>
     </div>

@@ -4,6 +4,7 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import useGames from "../Hooks/useGames";
 import type { Genre } from "../Hooks/useGenres";
+import type { GameQuery } from "../App";
 
 export interface Platform {
     id: number,
@@ -20,12 +21,11 @@ export interface Game{
 }
 
 interface Props {
-  selectedGenre: Genre | null
-  selectedPlatform: Platform | null
+  gameQuery: GameQuery
 }
 
-export default function GameGrid({selectedGenre,selectedPlatform}:Props) {
-  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+export default function GameGrid({gameQuery}:Props) {
+  const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
