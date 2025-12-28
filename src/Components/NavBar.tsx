@@ -1,4 +1,4 @@
-import { HStack, Image, Show, IconButton } from "@chakra-ui/react";
+import { HStack, Image, Show, IconButton, Hide } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import logo from "../assets/GameHub_logo.svg";
 import ColorModeSwitch from "./ColorModeSwitch";
@@ -11,7 +11,7 @@ interface Props {
 
 const NavBar = ({ onOpenDrawer, onSearch }: Props) => {
   return (
-    <HStack justifyContent={'space-between'} padding="10px">
+    <HStack justifyContent={"space-between"} padding="10px">
       <HStack>
         <Show below="lg">
           <IconButton
@@ -21,7 +21,9 @@ const NavBar = ({ onOpenDrawer, onSearch }: Props) => {
             variant="ghost"
           />
         </Show>
-        <Image src={logo} padding="10px" boxSize="60px"></Image>
+        <Hide below='md'>
+          <Image src={logo} padding="10px" boxSize="60px"></Image>
+        </Hide>
       </HStack>
       <HStack>
         <SearchInput onSearch={onSearch} />
