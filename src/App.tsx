@@ -7,6 +7,7 @@ import type { Genre } from "./Hooks/useGenres";
 import PlatformSelector from "./Components/PlatformSelector";
 import type { Platform } from "./Hooks/useGames";
 import SortSelector from "./Components/SortSelector";
+import GameHeading from "./Components/GameHeading";
 
 
 // Refactor: Extracting a universal query object
@@ -49,6 +50,9 @@ const App = () => {
 
 
         <GridItem area="main" fontWeight="bold" height={'100dvh'} overflow={'auto'} padding={2}>
+
+          <GameHeading gameQuery={gameQuery}/>
+
           <Flex gap={2}>
           <SortSelector onSelectSortOrder={sortOrder => setGameQuery({...gameQuery,sortOrder})} />
           <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={platform => setGameQuery({...gameQuery,platform})}/>
