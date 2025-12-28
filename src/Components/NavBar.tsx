@@ -11,7 +11,7 @@ interface Props {
 
 const NavBar = ({ onOpenDrawer, onSearch }: Props) => {
   return (
-    <HStack justifyContent={"space-between"} padding="10px">
+    <HStack justifyContent={'space-between'} padding="10px">
       <HStack>
         <Show below="lg">
           <IconButton
