@@ -23,7 +23,9 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <>
-    <Heading fontSize={'3xl'} marginY={3}>Genres</Heading>
+      <Heading fontSize={"3xl"} marginY={3}>
+        Genres
+      </Heading>
       <List>
         {isLoading &&
           skeletons.map((skeleton) => (
@@ -33,7 +35,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
             </HStack>
           ))}
 
-        {data?.map((g) => (
+        {data?.results.map((g) => (
           <ListItem paddingY={2} key={g.id}>
             <HStack>
               <Image
