@@ -58,7 +58,7 @@ const App = () => {
             area="aside"
             bgColor={"blackAlpha.100"}
             paddingX={2}
-            height={"100dvh"}
+            height={"calc(100dvh - 80px)"}
             overflow={"auto"}
           >
             <GenreList
@@ -71,7 +71,7 @@ const App = () => {
         <GridItem
           area="main"
           fontWeight="bold"
-          height={"100dvh"}
+          height={"calc(100dvh - 80px)"}
           overflow={"auto"}
           padding={2}
         >

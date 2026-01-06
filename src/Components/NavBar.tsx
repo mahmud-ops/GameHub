@@ -15,6 +15,8 @@ const NavBar = ({ onOpenDrawer, onSearch }: Props) => {
       <HStack>
         <Show below="lg">
           <IconButton
+            boxShadow={'60px'}
+            padding={'10px'}
             icon={<MdMenu />}
             onClick={onOpenDrawer}
             aria-label="Open menu"
