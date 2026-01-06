@@ -20,12 +20,12 @@ import type { Platform } from "./Hooks/useGames";
 import SortSelector from "./Components/SortSelector";
 import GameHeading from "./Components/GameHeading";
 
-// Refactor: Extracting a universal query object
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
   searchText: string;
+  pageSize: number
 }
 
 const App = () => {
