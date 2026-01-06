@@ -69,6 +69,7 @@ const App = () => {
         </Show>
 
         <GridItem
+          id = "main-grid"
           area="main"
           fontWeight="bold"
           height={"calc(100dvh - 80px)"}
