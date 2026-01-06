@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query"
-import apiClient, { type FetchResponse } from "../Services/api-client"
+import APIclient from "../Services/api-client"
 import type { Platform } from "./useGames"
+
+const apiClient = new APIclient<Platform>('/platforms')
 
 const usePlatforms = () => useQuery({
   queryKey: ['platforms'],
-  queryFn: () =>  apiClient.get<FetchResponse<Platform>>('/platforms').then(res => res.data)
+  queryFn: () => apiClient.getData({})
 })
 
 export default usePlatforms
