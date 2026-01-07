@@ -12,12 +12,12 @@ import useGenres, { type Genre } from "../Hooks/useGenres";
 import getCroppedImage from "../Services/cropped-image";
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  onSelectGenreId: (genreId: Genre) => void;
+  selectedGenreId?: number ;
 }
 
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectGenreId, selectedGenreId }: Props) => {
   const { data, isLoading } = useGenres();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -45,11 +45,11 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                 borderRadius={8}
               ></Image>
               <Button
-                fontWeight={g.id === selectedGenre?.id ? "bold" : "normal"}
-                color={g.id === selectedGenre?.id ? "violet" : ""}
+                fontWeight={g.id === selectedGenreId ? "bold" : "normal"}
+                color={g.id === selectedGenreId ? "violet" : ""}
                 variant={"link"}
                 fontSize={15}
-                onClick={() => onSelectGenre(g)}
+                onClick={() => onSelectGenreId(g)}
               >
                 {g.name}
               </Button>

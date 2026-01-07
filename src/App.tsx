@@ -14,14 +14,13 @@ import NavBar from "./Components/NavBar";
 import GameGrid from "./Components/GameGrid";
 import GenreList from "./Components/GenreList";
 import { useState } from "react";
-import type { Genre } from "./Hooks/useGenres";
 import PlatformSelector from "./Components/PlatformSelector";
 import type { Platform } from "./Hooks/useGames";
 import SortSelector from "./Components/SortSelector";
 import GameHeading from "./Components/GameHeading";
 
 export interface GameQuery {
-  genre: Genre | null;
+  genreId: number | undefined;
   platform: Platform | null;
   sortOrder: string;
   searchText: string;
@@ -62,8 +61,8 @@ const App = () => {
             overflow={"auto"}
           >
             <GenreList
-              selectedGenre={gameQuery.genre}
-              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+              selectedGenreId={gameQuery.genreId}
+              onSelectGenreId={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })}
             />
           </GridItem>
         </Show>
@@ -101,8 +100,8 @@ const App = () => {
           <DrawerHeader>Genres</DrawerHeader>
           <DrawerBody>
             <GenreList
-              selectedGenre={gameQuery.genre}
-              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+              selectedGenreId={gameQuery.genreId}
+              onSelectGenreId={(genre) => setGameQuery({ ...gameQuery, genreId:genre.id })}
             />
           </DrawerBody>
         </DrawerContent>

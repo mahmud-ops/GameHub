@@ -22,7 +22,7 @@ const useGames = (gameQuery: GameQuery) => useInfiniteQuery<FetchResponse<Game>,
     queryKey: ['games',gameQuery],
     queryFn: ({pageParam = 1}:QueryFunctionContext) => apiClient.getData({
         params: {
-            genres: gameQuery.genre?.id,
+            genres: gameQuery.genreId,
             platforms: gameQuery.platform?.id,
             ordering: gameQuery.sortOrder,
             search: gameQuery.searchText,
@@ -37,5 +37,3 @@ const useGames = (gameQuery: GameQuery) => useInfiniteQuery<FetchResponse<Game>,
 })
 
 export default useGames
-
-
