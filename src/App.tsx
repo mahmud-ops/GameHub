@@ -15,13 +15,12 @@ import GameGrid from "./Components/GameGrid";
 import GenreList from "./Components/GenreList";
 import { useState } from "react";
 import PlatformSelector from "./Components/PlatformSelector";
-import type { Platform } from "./Hooks/useGames";
 import SortSelector from "./Components/SortSelector";
 import GameHeading from "./Components/GameHeading";
 
 export interface GameQuery {
-  genreId: number | undefined;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
   pageSize: number
@@ -84,9 +83,9 @@ const App = () => {
               }
             />
             <PlatformSelector
-              selectedPlatform={gameQuery.platform}
+              selectedPlatformId={gameQuery.platformId}
               onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+                setGameQuery({ ...gameQuery, platformId: platform.id })
               }
             />
           </Flex>

@@ -5,13 +5,14 @@ import type { Platform } from "./GameGrid";
 
 interface Props {
     onSelectPlatform:(platform: Platform) => void;
-    selectedPlatform: Platform | null;
+    selectedPlatformId?: number;
 }
 
-const PlatformSelector = ({onSelectPlatform, selectedPlatform}:Props) => {
+const PlatformSelector = ({onSelectPlatform, selectedPlatformId}:Props) => {
   
     const { data } = usePlatforms();
-  
+    const selectedPlatform = data?.results.find(p => p.id === selectedPlatformId);
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
