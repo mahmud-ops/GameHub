@@ -13,21 +13,11 @@ import {
 import NavBar from "./Components/NavBar";
 import GameGrid from "./Components/GameGrid";
 import GenreList from "./Components/GenreList";
-import { useState } from "react";
 import PlatformSelector from "./Components/PlatformSelector";
 import SortSelector from "./Components/SortSelector";
 import GameHeading from "./Components/GameHeading";
 
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-  pageSize: number
-}
-
 const App = () => {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -43,12 +33,7 @@ const App = () => {
         }}
       >
         <GridItem area="nav" bgColor={"blackAlpha.100"}>
-          <NavBar
-            onOpenDrawer={onOpen}
-            onSearch={(searchText) => {
-              setGameQuery({ ...gameQuery, searchText });
-            }}
-          />
+          <NavBar onOpenDrawer={onOpen} />
         </GridItem>
 
         <Show above="lg">
@@ -59,37 +44,25 @@ const App = () => {
             height={"calc(100dvh - 80px)"}
             overflow={"auto"}
           >
-            <GenreList
-              selectedGenreId={gameQuery.genreId}
-              onSelectGenreId={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })}
-            />
+            <GenreList />
           </GridItem>
         </Show>
 
         <GridItem
-          id = "main-grid"
+          id="main-grid"
           area="main"
           fontWeight="bold"
           height={"calc(100dvh - 80px)"}
           overflow={"auto"}
           padding={2}
         >
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading />
 
           <Flex gap={2}>
-            <SortSelector
-              onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-            />
-            <PlatformSelector
-              selectedPlatformId={gameQuery.platformId}
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platformId: platform.id })
-              }
-            />
+            <SortSelector />
+            <PlatformSelector />
           </Flex>
-          <GameGrid gameQuery={gameQuery} />
+          <GameGrid/>
         </GridItem>
       </Grid>
 
@@ -98,10 +71,7 @@ const App = () => {
         <DrawerContent>
           <DrawerHeader>Genres</DrawerHeader>
           <DrawerBody>
-            <GenreList
-              selectedGenreId={gameQuery.genreId}
-              onSelectGenreId={(genre) => setGameQuery({ ...gameQuery, genreId:genre.id })}
-            />
+            <GenreList />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

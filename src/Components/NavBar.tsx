@@ -6,10 +6,10 @@ import SearchInput from "./SearchInput";
 
 interface Props {
   onOpenDrawer: () => void;
-  onSearch: (searchText: string) => void;
 }
 
-const NavBar = ({ onOpenDrawer, onSearch }: Props) => {
+const NavBar = ({ onOpenDrawer }: Props) => {
+
   return (
     <HStack justifyContent={"space-between"} padding="10px">
       <HStack>
@@ -28,7 +28,7 @@ const NavBar = ({ onOpenDrawer, onSearch }: Props) => {
         </Hide>
       </HStack>
       <HStack>
-        <SearchInput onSearch={onSearch} />
+        <SearchInput/>
         <ColorModeSwitch />
       </HStack>
     </HStack>
