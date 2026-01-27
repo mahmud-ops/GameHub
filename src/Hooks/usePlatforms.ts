@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import APIclient from "../Services/api-client"
-import type { Platform } from "./useGames"
+import type { Platform } from "../Entities/Platform"
 
 const apiClient = new APIclient<Platform>('/platforms')
 
