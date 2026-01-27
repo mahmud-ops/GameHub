@@ -1,16 +1,24 @@
-import { Box } from "@chakra-ui/react"
-import type { ReactNode } from "react"
+import { Box } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
+
+const MotionBox = motion(Box);
 
 interface Props {
-    children: ReactNode
+  children: ReactNode;
 }
 
-const GameCardContainer = ({children}: Props) => {
+const GameCardContainer = ({ children }: Props) => {
   return (
-    <Box borderRadius={10} overflow="hidden">
-        {children}
-    </Box>
-  )
-}
+    <MotionBox
+      borderRadius={10}
+      overflow="hidden"
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      {children}
+    </MotionBox>
+  );
+};
 
-export default GameCardContainer
+export default GameCardContainer;

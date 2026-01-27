@@ -1,4 +1,4 @@
-import { useDisclosure } from "@chakra-ui/react";
+import { Box, useDisclosure } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 
@@ -8,7 +8,9 @@ const Layout = () => {
   return (
     <>
       <NavBar onOpenDrawer={onOpen} />
-      <Outlet context={{isOpen, onClose}}/>
+      <Box paddingX={5}>
+        <Outlet context={{ isOpen, onClose }} />
+      </Box>
     </>
   );
 };
