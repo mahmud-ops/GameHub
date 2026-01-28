@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 interface Props {
   children: ReactNode;
